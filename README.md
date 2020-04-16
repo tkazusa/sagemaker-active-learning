@@ -28,5 +28,6 @@
 ## 参考
 - [Amazon Augmented AI をヒューマンレビューに使用する](https://docs.aws.amazon.com/ja_jp/sagemaker/latest/dg/use-augmented-ai-a2i-human-review-loops.html)
 - [カスタムタスクタイプで Amazon Augmented AI を使用する](https://docs.aws.amazon.com/ja_jp/sagemaker/latest/dg/a2i-task-types-custom.html)
+- [Amazon Augmented AI Sample Notebooks](https://github.com/aws-samples/amazon-a2i-sample-jupyter-notebooks)
 - [Bring your own model for Amazon SageMaker labeling workflows with active learning](https://aws.amazon.com/jp/blogs/machine-learning/bring-your-own-model-for-amazon-sagemaker-labeling-workflows-with-active-learning/)
 
