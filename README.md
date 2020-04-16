@@ -16,7 +16,7 @@
                 - どのタスクやるのか：ヒューマンタスク(作成したカスタムワーカーテンプレ、UI)の ARN
                 - タスク数、タイトル、説明を記載
          2. ヒューマンループ を開始する
-            -  StartupHumanLoop] (https://docs.aws.amazon.com/augmented-ai/2019-11-07/APIReference/API_StartHumanLoop.html) を開始する
+            -  [StartupHumanLoop] (https://docs.aws.amazon.com/augmented-ai/2019-11-07/APIReference/API_StartHumanLoop.html) を開始する
                 - DataAttributes: 顧客によって指定された data attribute
                 - FlowDefinitionArn: FlowDefinition の ARN
                 - HumanLoopInput: Serialized input from the human loop.
