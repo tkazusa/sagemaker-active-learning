@@ -1,4 +1,4 @@
-# SageMaker を使った Active Learning の実装
+# Amazon SageMaker を使った Active Learning の実装
 ## 実装の方針
 - Augmented AI を使う
 - SageMaker GroundTruth と StepFunctions を使う
