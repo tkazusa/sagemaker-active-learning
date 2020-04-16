@@ -6,7 +6,7 @@
 
 ### Augmented AI を使う
 1. カスタムワーカーテンプレートを作成する
-a. テンプレート名、IAMロール、テンプレートを設定
+    a. テンプレート名、IAMロール、テンプレートを設定
 2. ヒューマンレビューワークフローを作成する
   a. Amazon A2I `CreateFlowDefinition` API を使用する
   
