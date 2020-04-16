@@ -8,7 +8,7 @@
 1. カスタムワーカーテンプレートを作成する
     a. テンプレート名、IAMロール、テンプレートを設定
 2. ヒューマンレビューワークフローを作成する
-  a. Amazon A2I `CreateFlowDefinition` API を使用する
+    a. Amazon A2I `CreateFlowDefinition` API を使用する
   
 
 ## 参考
