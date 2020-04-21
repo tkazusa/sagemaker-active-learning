@@ -1,6 +1,7 @@
 # Amazon SageMaker を使った Active Learning の実装
 ## 実装の方針
-### Augmented AI を使う
+
+### ①Augmented AI を使う
 バッチ推論を行うタイミングで、それぞれの推論毎に confidence を確認。能動学習用のラベルジョブへデータを送る。推論エンドポイントに組み込むのに向いていると感じる。
 
 [メリット]
@@ -10,7 +11,7 @@
 [デメリット]
 - 能動学習後の出力がs3においてデータのパスのディレクトリがわかれた形で保存される
 
-### SageMaker GroundTruth と Lambda、StepFunctions を使う
+### ②SageMaker GroundTruth と Lambda、StepFunctions を使う
 推論ジョブのどこかしらのタイミングで confidence を確認し、推論が終わったタイミングでLambdaにてconfidenceを確認、Lambdaにてラベリングジョブを立ち上げる。
 
 ![SageMakerでの能動学習](https://github.com/tkazusa/sagemaker-active-learning/blob/master/images/byom-sagemaker-1.gif?raw=true "サンプル")
