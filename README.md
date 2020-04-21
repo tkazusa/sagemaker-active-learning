@@ -13,6 +13,8 @@
 ### SageMaker GroundTruth と Lambda、StepFunctions を使う
 推論ジョブのどこかしらのタイミングで confidence を確認し、推論が終わったタイミングでLambdaにてconfidenceを確認、Lambdaにてラベリングジョブを立ち上げる。
 
+![SageMakerでの能動学習](https://github.com/tkazusa/sagemaker-active-learning/blob/master/images/byom-sagemaker-1.gif?raw=true "サンプル")
+
 [メリット]
 - 通常のラベリングジョブと変わらずに使える
 
