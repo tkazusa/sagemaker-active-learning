@@ -1,9 +1,20 @@
 # Amazon SageMaker を使った Active Learning の実装
 ## 実装の方針
-- Augmented AI を使う
-- SageMaker GroundTruth と StepFunctions を使う
+### Augmented AI を使う
+バッチ推論を行うタイミングで、それぞれの推論毎に confidence を確認。能動学習用のラベルジョブへデータを送る。
+[メリット]
+- SageMaker GroundTruth のラベリングジョブを立ち上げる
+- 一度 WorkFlow を定義するとあとから、推論データを追加して、能動学習を行うことができる
+[デメリット]
+- 能動学習後の出力がs3においてデータのパスのディレクトリがわかれた形で保存される
 
-- モデルのフローが流れて、ODなり、SemSegやる、不定期
+### SageMaker GroundTruth と Lambda、StepFunctions を使う
+推論ジョブのどこかしらのタイミングで confidence を確認し、推論が終わったタイミングでLambdaにてconfidenceを確認、Lambdaにてラベリングジョブを立ち上げる。
+
+[メリット]
+- 通常のラベリングジョブと変わらずに使える
+[デメリット]
+- 
 
 ### Augmented AI を使う
 1. カスタムワーカーテンプレートを作成する
