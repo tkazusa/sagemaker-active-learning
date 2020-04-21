@@ -1,7 +1,7 @@
 # Amazon SageMaker を使った Active Learning の実装
 ## 実装の方針
 ### Augmented AI を使う
-バッチ推論を行うタイミングで、それぞれの推論毎に confidence を確認。能動学習用のラベルジョブへデータを送る。
+バッチ推論を行うタイミングで、それぞれの推論毎に confidence を確認。能動学習用のラベルジョブへデータを送る。推論エンドポイントに組み込むのに向いていると感じる。
 
 [メリット]
 - SageMaker GroundTruth のラベリングジョブを立ち上げる
@@ -39,9 +39,6 @@
                 - HumanLoopInput: Serialized input from the human loop.
                 - HumanLoopName: ヒューマンループの名前を入れる 
                 
-                
-  
-
 ## 参考
 - [Amazon Augmented AI をヒューマンレビューに使用する](https://docs.aws.amazon.com/ja_jp/sagemaker/latest/dg/use-augmented-ai-a2i-human-review-loops.html)
 - [カスタムタスクタイプで Amazon Augmented AI を使用する](https://docs.aws.amazon.com/ja_jp/sagemaker/latest/dg/a2i-task-types-custom.html)
