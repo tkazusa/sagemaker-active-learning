@@ -2,20 +2,20 @@
 ## 能動学習実施までの流れ
 - 下記の一連の流れを StepFunctions でパイプラインとして実施する。
     - 推論ジョブ：AWS Batch で推論を実施し、能動学習対象となるデータを選別する
-    - ラベリングジョブ：AWS Lambda で SageMaker の `CreateLabelingJob` API でラベリングジョブを作成する
+    - ラベリングジョブ：AWS Lambda で SageMaker の [CreateLabelingJob API](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.create_labeling_job) でラベリングジョブを作成する
 
 ## 推論ジョブに必要なコンポーネント
 AWS Batch を用いて推論を行う場合に必要なコンポーネントは下記。
 - 推論用コンテナイメージ
 - AWS Batch ジョブ(BatchJobDefinition、BatchJobName、BatchJobQueue)
 - IAM ロール
-    - AWS Batch用のロール：`` 
+    - AWS Batch用のロール：今回は `Job role` を指定しておりません。
 
 ## ラベリングジョブに必要なコンポーネント
 AWS Lambda で  ラベリングジョブを作成する場合に必要なコンポーネントは下記。
-- ラベリングジョブ作成用 Lambda 関数：create_labeling_job.py
-- SageMaker Ground Truth HTML テンプレート；segmentation.liquid.html
-- SageMaker Ground Truth ラベル設定：LabelCategoryconfig.json
+- ラベリングジョブ作成用 Lambda 関数: [create_labeling_job.py](https://github.com/tkazusa/sagemaker-active-learning/blob/master/labeling/create_labeling_job.py)
+- SageMaker Ground Truth HTML テンプレート: [segmentation.liquid.html](https://github.com/tkazusa/sagemaker-active-learning/blob/master/labeling/segmentation.liquid.html)
+- SageMaker Ground Truth ラベル設定: [LabelCategoryconfig.json](https://github.com/tkazusa/sagemaker-active-learning/blob/master/labeling/LabelCategoryConfig.json)
 - プレラベリング Lambda 関数：pretask.py
 - ポストラベリング Lambda 関数：posttask.py
 - IAM ロール
