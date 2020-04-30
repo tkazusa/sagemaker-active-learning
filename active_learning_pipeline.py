@@ -20,6 +20,9 @@ if __name__ == '__main__':
             'BatchJobDefinition': str,
             'BatchJobName': str,
             'BatchJobQueue': str,
+        
+            # AWS Lambda
+            'LambdaFunctionName': str,
         }
     )
 
@@ -28,7 +31,10 @@ if __name__ == '__main__':
         # AWS Batch
         'BatchJobDefinition': 'active-learning-job_run:1',
         'BatchJobName': 'active-learning-inference',
-        'BatchJobQueue': 'active-learning-inference'
+        'BatchJobQueue': 'active-learning-inference',
+
+        # AWS Lambda
+        'LambdaFunctionName': 'create_labeling_job'
     }
     
     ## AWS Batch のジョブを Submit するステップ
@@ -50,7 +56,6 @@ if __name__ == '__main__':
     # 各 Step を連結
     chain_list = [inference_step, lambda_step]
     workflow_definition = steps.Chain(chain_list)
-    
     
     # Workflow の作成
     workflow = Workflow(
