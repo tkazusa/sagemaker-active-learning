@@ -6,7 +6,7 @@
 
 ## 推論ジョブに必要なコンポーネント
 AWS Batch を用いて推論を行う場合に必要なコンポーネントは下記。
-- 推論用コンテナイメージ
+- 推論用コンテナイメージ：[Dockerfile](https://github.com/tkazusa/sagemaker-active-learning/blob/master/containers/batch/Dockerfile)
 - AWS Batch ジョブ(BatchJobDefinition、BatchJobName、BatchJobQueue)
 - IAM ロール
     - AWS Batch用のロール：今回は `Job role` を指定しておりません。
@@ -16,31 +16,31 @@ AWS Lambda で  ラベリングジョブを作成する場合に必要なコン�
 - ラベリングジョブ作成用 Lambda 関数: [create_labeling_job.py](https://github.com/tkazusa/sagemaker-active-learning/blob/master/labeling/create_labeling_job.py)
 - SageMaker Ground Truth HTML テンプレート: [segmentation.liquid.html](https://github.com/tkazusa/sagemaker-active-learning/blob/master/labeling/segmentation.liquid.html)
 - SageMaker Ground Truth ラベル設定: [LabelCategoryconfig.json](https://github.com/tkazusa/sagemaker-active-learning/blob/master/labeling/LabelCategoryConfig.json)
-- プレラベリング Lambda 関数：pretask.py
-- ポストラベリング Lambda 関数：posttask.py
+- プレラベリング Lambda 関数：[pretask.py](https://github.com/tkazusa/sagemaker-active-learning/blob/master/labeling/pretask.py)
+- ポストラベリング Lambda 関数：[posttask.py](https://github.com/tkazusa/sagemaker-active-learning/blob/master/labeling/posttask.py)
 - IAM ロール
-    - ラベリングジョブ作成用 Lambda 関数：
+    - ラベリングジョブ作成用 Lambda 関数： AmazonSageMakerFullAccess を付与
     - SageMaker ラベリングジョブ用のロール: AWSLambdaFullAccess と AmazonSageMakerFullAccess を付与
-    - プレラベリング Lambda 関数用のロール: AWSLambdaBasicExecutionRole と、 AmazonS3ReadOnlyAccess
+    - プレラベリング Lambda 関数用のロール: AWSLambdaBasicExecutionRole へ、 AmazonS3ReadOnlyAccess を付与
     - ポストラベリング　Lambda 関数用のロール: AWSLambdaBasicExecutionRole
 
 ## 能動学習パイプラインに必要なコンポーネント
 AWS Step Functions で能動学習パイプラインを構築するために必要なコンポーネントは下記。
-- 能動学習パイプライン：active_learning_pipeline.py
+- 能動学習パイプライン: [active_learning_pipeline.py](https://github.com/tkazusa/sagemaker-active-learning/blob/master/active_learning_pipeline.py)
 - 推論ジョブコンポーネント
 - ラベリングジョブコンポーネント
 - IAM ロール
-    - 能動学習パイプライン：
+    - 能動学習パイプライン: StepFunctionsWorkflowExecutionRole
     
 ## 準備の手順
-- 必要なライブラリのインストール：requirments.txt
+- 必要なライブラリのインストール：[requirments.txt](https://github.com/tkazusa/sagemaker-active-learning/blob/master/requirments.txt)
 - 推論ジョブの準備
-    - 推論用コンテナイメージを作成し Amazon ECR へ登録する：ecr-regist-batch.sh
+    - 推論用コンテナイメージを作成し Amazon ECR へ登録する: [ecr-regist-batch.sh](https://github.com/tkazusa/sagemaker-active-learning/blob/master/containers/batch/ecr-regist-batch.sh)
     - AWS Batch ジョブを作成する
 - ラベリングジョブの準備
     - ラベリングジョブのコンポーネントを作成する
         - HTMLテンプレート、プレラベリング Lambda、ポストラベリング Lambda、ワーカーチーム、ラベル設定
-    - SageMaker の `CreateLabelingJob` API でラベリングジョブを作成するための Lambda 関数を作成する
+    - SageMaker の [CreateLabelingJob API](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.create_labeling_job) でラベリングジョブを作成するための Lambda 関数を作成する
 - 能動学習用のパイプラインの作成
 
 
