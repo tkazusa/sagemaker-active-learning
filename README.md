@@ -45,7 +45,7 @@ AWS Step Functions で能動学習パイプラインを構築するために必�
 
 
 ## TODO 
-- 推論後に推論対象になるデータを選定するジョブの作成
+- 推論後に推論対象になるデータを選定するジョブの作成。今回は選別後のラベリング対象データとして [active-learning.manifest](https://github.com/tkazusa/sagemaker-active-learning/blob/master/labeling/active-learning.manifest) を活用。
 
 ## 参考
 - [Amazon Augmented AI をヒューマンレビューに使用する](https://docs.aws.amazon.com/ja_jp/sagemaker/latest/dg/use-augmented-ai-a2i-human-review-loops.html)
