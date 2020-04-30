@@ -2,7 +2,7 @@
 ## 能動学習実施までの流れ
 - 下記の一連の流れを StepFunctions でパイプラインとして実施する。
     - 推論ジョブ：AWS Batch で推論を実施し、能動学習対象となるデータを選別する
-    - ラベリングジョブ：AWS Lambda で SageMaker の `[CreateLabelingJob](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.create_labeling_job)` API でラベリングジョブを作成する
+    - ラベリングジョブ：AWS Lambda で SageMaker の [CreateLabelingJob](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.create_labeling_job) API でラベリングジョブを作成する
 
 ## 推論ジョブに必要なコンポーネント
 AWS Batch を用いて推論を行う場合に必要なコンポーネントは下記。
